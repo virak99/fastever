@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<ons-page>
+    <ons-tabbar animation="none" position="auto" id="tabbar">
+        <ons-tab label="Home" icon="ion-ios-chatboxes" page="home.html" active>
+        </ons-tab>
+        <ons-tab label="Friends" icon="ion-ios-people" page="friend.html">
+        </ons-tab>
+        <ons-tab label="Account" icon="ion-person" page="account.html">
+        </ons-tab>
+        <ons-tab label="Test" icon="ion-ios-people" page="chat.html">
+        </ons-tab>
+    </ons-tabbar>
+</ons-page>
+    
+
+<template id="friend.html">
+    <ons-navigator animation="slide" id="friend_nav" swipeable>
+        <ons-page id="friend_page">
+            <ons-toolbar class="tb">
+                <form class="a">
+                    <ons-search-input placeholder="Search" style="width:100%"></ons-search-input>
+                </form>
+            </ons-toolbar>
+            <div class="content">
+                <ons-list-item tappable>
+                    <div class="left">
+                        <span class="ion-ios-personadd-outline icon-left"></span>
+                    </div>
+                    <div class="center">
+                        Add Friend
+                    </div>
+                </ons-list-item>
+                <ons-list-header>Friend List</ons-list-header>
+                    <ons-list class="fs" id="friend_list">
+                       
+                    </ons-list>
+                    <script>
+                        /*
+                        <ons-list class="list">
+                        <ons-list-item tappable>
+                            <div class="left">
+                                <img class="list-item-thumbnail" src="http://nekoten.sangskrit.com/fastever/users/aaa/profile.jpg">
+                            </div>
+                            <div class="center">
+                                <span class="list-item-title">Virak</span>
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item tappable>
+                            <div class="left">
+                                <img class="list-item-thumbnail" src="http://nekoten.sangskrit.com/fastever/users/aaa/profile.jpg">
+                            </div>
+                            <div class="center">
+                                <span class="list-item-title">Virak</span>
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
+                        */
+                    </script>
+                    
+            </div>
+            
+        </ons-page>
+    </ons-navigator>
+</template>
+
+<ons-modal id="new_message" direction="up">
+  <div style="text-align: center">
+    <ons-page>
+        <div class="ts">
+            <div class="a">
+                <span onclick="$('ons-modal').hide()">Cancel</span>
+            </div>
+            <div class="b">
+                New Message
+            </div>
+            <div class="c">
+                <span onclick="$('ons-modal').hide()">Create</span>
+            </div>
+        </div>
+        <div class="re">
+            <label class="a">To:</label>
+            <ons-input type="text" class="b">
+        </div>
+        <p>hi</p>
+    </ons-page>
+  </div>
+</ons-modal>
+  
+  
+<template id="home.html">
+    <ons-navigator id="chat_nav" swipeable>
+        <ons-page>
+            <ons-toolbar class="tb" style="display:block">
+                <form class="c">
+                    <ons-search-input placeholder="Search" style="width:100%"></ons-search-input>
+                </form>
+                <div class="b" onclick="newMessage();">
+                    <span class="ion-ios-compose-outline"></span>
+                </div>
+            </ons-toolbar>
+            <ons-tabbar swipeable position="top">
+                <ons-tab page="chat_list.html" label="Message" active>
+                </ons-tab>
+                <ons-tab page="group_list.html" label="Group">
+                </ons-tab>
+             </ons-tabbar>
+        </ons-page>
+    </ons-navigator>
+</template>
+
+<template id="chat_list.html">
+    <ons-navigator animation="slide" swipeable>
+        <ons-page>
+        
+         <ons-pull-hook id="pull-hook">
+            Pull to refresh
+          </ons-pull-hook>
+            <ons-list id="chat_list" class="cl">
+              
+            </ons-list>
+        </ons-page>
+    </ons-navigator>
+</template>
+
+<template id="test.html">
+    <ons-page>
+    <ons-toolbar><p class="center">Test</p></ons-toolbar>
+        <ons-list id="mycontacts" style="position: absolute; width: 100%; top: 0px; background: #f9f9f9;">
+    <ons-list-header style="background: #f9f9f9;">Contacts:</ons-list-header>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+    <ons-list-item tappable style="background: #f9f9f9;">
+      ...
+    </ons-list-item>
+  </ons-list>
+    </ons-page>
+</template>
+
+
+<template id="chat.html">
+    <ons-page>
+        <div class="tb2">
+            <div class="left">
+                <ons-back-button onclick="$('#tabbar .tabbar:not(.tabbar--top)').show();">Chat</ons-back-button>
+            </div>
+            <div class="a" id="chat_title">Message</div>
+        </div>
+        
+        <input id="room_id" type="hidden"/>
+        <input id="friend_id" type="hidden"/>
+        
+        <div class="content content2" id="chat_content">
+            <div id="chat_body">
+                
+            </div>
+        </div>
+        
+ 
+        <div class="mb">
+            <div class="c" id="msg_body_panel">
+                <div class="a">
+                    <textarea class="textarea" id="msg_body" placeholder="Type your message here ..."></textarea>
+                </div>
+                <div class="b" onclick="send()">
+                    <span class="ion-android-send"></span>
+                </div>
+            </div>
+        </div>
+    </ons-page>
+</template>
+
+<template id="group_list.html">
+  <ons-page id="Tab4">
+    <p style="text-align: center;">This is the test.</p>
+          <div class="bv">
+            WED 15:05
+        </div>
+        <div class="cv">
+            <div class="a">
+                <img src="http://placekitten.com/g/40/40" alt="" />
+            </div>
+            <div class="b">
+                <div class="c">
+                    Person 1
+                </div>
+                <div class="d">
+                    Hi. Nice to meet you.
+                </div>
+            </div>
+        </div>
+        <div class="dv">
+            <div class="a">
+                   Nice to mee you too.
+            </div>
+        </div>
+  </ons-page>
+</template>
+
+
+
+
+    <ons-template id="account.html">
+        <ons-navigator id="account_nav" swipeable>
+            <ons-page>
+                <ons-toolbar class="tb">
+                    <div class="a">Account</div>
+                </ons-toolbar>
+                <div class="content">
+                    <center class="dg">
+                        <img id="profile_pic" class="a">
+                        <div class="b" id="profile_name"></div>
+                    </center>
+                    
+                    <ons-list class="jk">
+                        <ons-list-item modifier="chevron" tappable onclick="pushPage('account_nav', 'notification.html')">
+                            <div class="left">
+                                <ons-icon class="noti_icon" icon="ion-android-notifications-none"></ons-icon>
+                            </div>
+                            <div class="center">
+                                Notification
+                            </div>
+                             <div class="list-item__right">
+                                <div class="list-item__label">Off</div>
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item modifier="chevron" tappable onclick="pushPage('account_nav', 'language.html')">
+                            <div class="left">
+                                <span class="lang_icon">A</span>
+                            </div>
+                            <div class="center">
+                                Language
+                            </div>
+                             <div class="list-item__right">
+                                <div class="list-item__label">English</div>
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
+                    <ons-list class="jk">
+                        <ons-list-item modifier="chevron" tappable onclick="logout()">
+                            <div class="left">
+                                <ons-icon class="logout_icon" icon="ion-android-exit"></ons-icon>
+                            </div>
+                            <div class="center">
+                                Sign Out
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
+                </div>
+            </ons-page>
+        </ons-navigator>
+    </ons-template>    
+    
+    <ons-template id="notification.html">    
+        <ons-page>
+            <div class="tb2">
+                <div class="left">
+                    <ons-back-button>Account</ons-back-button>
+                </div>
+                <div class="a">Notification</div>
+            </div>
+            <div class="content content2">
+                <ons-list>
+                    <ons-list-item>
+                        <div class="center">
+                            Turn it on
+                        </div>
+                        <div class="right">
+                            <ons-switch></ons-switch>
+                        </div>
+                    </ons-list-item>
+                </ons-list>
+            </div>
+            
+        </ons-page>    
+    </ons-template>
+    
+    <ons-template id="language.html">    
+        <ons-page>
+            <div class="tb2">
+                <div class="left">
+                    <ons-back-button>Account</ons-back-button>
+                </div>
+                <div class="a">Language</div>
+            </div>
+            <div class="content content2">
+                <ons-list>
+                    <ons-list-item onclick="chageLang('en')" modifier="chevron" tappable >
+                       English
+                    </ons-list-item>
+                    <ons-list-item onclick="chageLang('jp')" modifier="chevron" tappable >
+                       日本語
+                    </ons-list-item>
+                </ons-list>
+            </div>
+            
+        </ons-page>    
+    </ons-template>
+  
+    <ons-modal id="login" class="si" direction="up">
+        <div class="c">
+            Fastever
+        </div>
+        <div class="a">
+            <ons-input id="email" modifier="underbar" placeholder="Email" float></ons-input>    
+        </div>
+        <div class="a">
+            <ons-input id="password" modifier="underbar" type="Password" placeholder="Password" float></ons-input>        
+        </div>
+        <div class="a">
+            <ons-button modifier="large" onclick="login()">Log In</ons-button>        
+        </div>
+        <div class="b">
+            <ons-button modifier="quiet">Forgot password?</ons-button>    
+        </div>
+        <div class="b">                
+            <ons-button modifier="quiet" onclick="$('#login').hide();$('#register').show()">Register here</ons-button>    
+        </div>
+    </ons-modal>
+    
+    <ons-modal id="register" class="si" direction="up">        
+        <div class="c">
+            Fastever
+        </div>
+        <div class="a">
+            <ons-input id="name" modifier="underbar" placeholder="Name" float></ons-input>    
+        </div>
+        <div class="a">
+            <ons-input id="email" modifier="underbar" placeholder="Email" float></ons-input>    
+        </div>
+        <div class="a">
+            <ons-input id="password" modifier="underbar" type="Password" placeholder="Password" float></ons-input>        
+        </div>
+        <div class="a">
+            <ons-button modifier="large" onclick="register()">Register</ons-button>        
+        </div>        
+        <div class="b">                
+            <ons-button modifier="quiet" onclick="$('#register').hide();$('#login').show()">Login now</ons-button>    
+        </div>
+    </ons-modal>
+
+    <script src="js/footer.js"></script>
+</body>
+</html>
